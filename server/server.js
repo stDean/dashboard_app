@@ -3,8 +3,7 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
-
-import connectDB from "./connect/connectDB";
+import mongoose from "mongoose";
 
 dotenv.config();
 
@@ -20,7 +19,10 @@ app.use(cors());
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     app.listen(PORT, () => {
       console.log(`Server listening on port: ${PORT}`);
     });
