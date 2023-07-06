@@ -1,18 +1,15 @@
-import dotenv from "dotenv";
-import express from "express";
-import helmet from "helmet";
-import morgan from "morgan";
-import cors from "cors";
-import mongoose from "mongoose";
-
-import ClientRoute from "./routes/client";
-import ManagementRoute from "./routes/management";
-import GeneralRoute from "./routes/general";
-import SalesRoute from "./routes/sales";
-
-dotenv.config();
-
+require("dotenv").config();
+const express = require("express");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const cors = require("cors");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
+
+const ClientRoute = require("./routes/client");
+const ManagementRoute = require("./routes/management");
+const GeneralRoute = require("./routes/general");
+const SalesRoute = require("./routes/sales");
 
 const app = express();
 app.use(express.json());
