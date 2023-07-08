@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {
   Box,
+  Divider,
   Drawer,
   IconButton,
   List,
@@ -10,6 +11,7 @@ import {
   ListItemText,
   Typography,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import {
   ChevronLeft,
@@ -25,10 +27,12 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
+  SettingsOutlined,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import FlexBetween from "./FlexBetween";
+import profileImage from "assets/p12.jpeg";
 
 const navItems = [
   {
@@ -90,6 +94,7 @@ const navItems = [
 ];
 
 const SideNav = ({
+  user,
   isNonMobile,
   drawerWidth,
   isSidebarOpen,
@@ -99,6 +104,7 @@ const SideNav = ({
   const [active, setActive] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
+  const xLarge = useMediaQuery("(min-width: 2000px)");
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -117,14 +123,16 @@ const SideNav = ({
             "& .MuiDrawer-paper": {
               color: theme.palette.secondary[200],
               backgroundColor: theme.palette.background.alt,
-              boxSixing: "border-box",
+              boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
             },
+            display: "flex",
+            flexDirection: "column",
           }}
         >
-          <Box width="100%">
-            <Box m="1.5rem 2rem 1rem 3rem">
+          <Box width="100%" m="0 0 2rem">
+            <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
@@ -132,17 +140,21 @@ const SideNav = ({
                   </Typography>
                 </Box>
                 {!isNonMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                  <IconButton
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                    sx={{ ml: "10px" }}
+                  >
                     <ChevronLeft />
                   </IconButton>
                 )}
               </FlexBetween>
             </Box>
+
             <List>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "1rem 0 .5rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
                   );
@@ -187,6 +199,55 @@ const SideNav = ({
                 );
               })}
             </List>
+          </Box>
+
+          <Box
+            sx={{
+              position: xLarge && "absolute",
+              bottom: xLarge && "2rem",
+              right: xLarge && "0rem",
+              left: xLarge && "0rem",
+            }}
+          >
+            <Divider />
+            <FlexBetween
+              textTransform="none"
+              gap="1rem"
+              m="1.5rem 2rem 2rem 3rem"
+            >
+              <Box
+                component="img"
+                alt="profile"
+                src={profileImage}
+                height="40px"
+                width="40px"
+                borderRadius="50%"
+                sx={{ objectFit: "cover" }}
+              />
+              <Box sx={{ ml: "-40px" }}>
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.9rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {/* {user.name} */}
+                  Dean
+                </Typography>
+                <Typography
+                  fontSize="0.8rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {/* {user.occupation} */}
+                  Desc
+                </Typography>
+              </Box>
+              <SettingsOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "25px ",
+                }}
+              />
+            </FlexBetween>
           </Box>
         </Drawer>
       )}
