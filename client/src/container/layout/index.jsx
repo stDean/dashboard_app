@@ -4,12 +4,14 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { NavBar, SideNav } from "components";
+import { useGetUserQuery } from "state/api";
 
 const Layout = () => {
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const userId = useSelector(({ global }) => global);
-  // const { data } = useGetUserQuery(userId);
+  const { userId } = useSelector(({ global }) => global);
+  const { data } = useGetUserQuery(userId);
+  console.log({ data });
 
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
@@ -22,7 +24,7 @@ const Layout = () => {
 
       <Box flexGrow={1}>
         <NavBar
-          // user={data || {}}
+          user={data || {}}
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />

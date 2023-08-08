@@ -11,6 +11,16 @@ const ManagementRoute = require("./routes/management");
 const GeneralRoute = require("./routes/general");
 const SalesRoute = require("./routes/sales");
 
+const User = require("./model/User");
+const {
+  dataAffiliateStat,
+  dataOverallStat,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+  dataUser,
+} = require("./data");
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -38,6 +48,10 @@ const start = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+
+    // RUN ONLY ONCE!!
+    // User.insertMany(dataUser);
+
     app.listen(PORT, () => {
       console.log(`Server listening on port: ${PORT}`);
     });
