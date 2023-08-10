@@ -12,6 +12,8 @@ const GeneralRoute = require("./routes/general");
 const SalesRoute = require("./routes/sales");
 
 const User = require("./model/User");
+const Products = require("./model/Product");
+const ProductStats = require("./model/ProductStats");
 const {
   dataAffiliateStat,
   dataOverallStat,
@@ -51,6 +53,8 @@ const start = async () => {
 
     // RUN ONLY ONCE!!
     // User.insertMany(dataUser);
+    //  Products.insertMany(dataProduct);
+    // ProductStats.insertMany(dataProductStat);
 
     app.listen(PORT, () => {
       console.log(`Server listening on port: ${PORT}`);

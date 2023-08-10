@@ -45,7 +45,10 @@ const NavBar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* LEFT SIDE */}
         <FlexBetween>
-          <IconButton onClick={() => setIsSidebarOpen(isSidebarOpen => !isSidebarOpen)}>
+          <IconButton
+            sx={{ marginRight: "10px", marginLeft: "-20px" }}
+            onClick={() => setIsSidebarOpen((isSidebarOpen) => !isSidebarOpen)}
+          >
             <MenuIcon />
           </IconButton>
 
@@ -103,15 +106,13 @@ const NavBar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                   fontSize="0.85rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {/* {user.name} */}
-                  Dean
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.75rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {/* {user.occupation} */}
-                  Developer
+                  {user.occupation}
                 </Typography>
               </Box>
 

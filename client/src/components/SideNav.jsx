@@ -213,32 +213,30 @@ const SideNav = ({
             <FlexBetween
               textTransform="none"
               gap="1rem"
-              m="1.5rem 2rem 2rem 3rem"
+              m="1.5rem 2rem .5rem 2rem"
             >
               <Box
                 component="img"
                 alt="profile"
                 src={profileImage}
-                height="40px"
-                width="40px"
+                height="50px"
+                width="50px"
                 borderRadius="50%"
                 sx={{ objectFit: "cover" }}
               />
-              <Box sx={{ ml: "-40px" }}>
+              <Box  textAlign='left'>
                 <Typography
                   fontWeight="bold"
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {/* {user.name} */}
-                  Dean
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {/* {user.occupation} */}
-                  Desc
+                  {user.occupation}
                 </Typography>
               </Box>
               <SettingsOutlined
