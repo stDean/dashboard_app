@@ -3,3 +3,5 @@ export { default as Layout } from "./layout";
 export { default as Products } from "./products";
 export { default as Customers } from "./customer";
 export { default as Transactions } from "./transaction";
+export { default as Geography } from "./geography";
+export { default as Overview } from "./overview";

@@ -8,7 +8,9 @@ import { themeSettings } from "theme";
 import {
   Customers,
   Dashboard,
+  Geography,
   Layout,
+  Overview,
   Products,
   Transactions,
 } from "container";
@@ -30,6 +32,8 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
+              <Route path="/geography" element={<Geography />} />
+              <Route path="/overview" element={<Overview />} />
             </Route>
           </Routes>
         </ThemeProvider>

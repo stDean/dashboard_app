@@ -15,6 +15,7 @@ const SalesRoute = require("./routes/sales");
 // const Products = require("./model/Product");
 // const ProductStats = require("./model/ProductStats");
 // const Transaction = require("./model/Transaction");
+// const OverallStat = require("./model/OverallStat");
 const {
   dataAffiliateStat,
   dataOverallStat,
@@ -40,10 +41,10 @@ app.use("/api/v1/client", ClientRoute);
 app.use("/api/v1/general", GeneralRoute);
 
 // management routes
-app.use("api/v1/management", ManagementRoute);
+app.use("/api/v1/management", ManagementRoute);
 
 // sales routes
-app.use("api/v1/sales", SalesRoute);
+app.use("/api/v1/sales", SalesRoute);
 
 const start = async () => {
   try {
@@ -57,6 +58,7 @@ const start = async () => {
     //  Products.insertMany(dataProduct);
     // ProductStats.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
+    // OverallStat.insertMany(dataOverallStat);
 
     app.listen(PORT, () => {
       console.log(`Server listening on port: ${PORT}`);

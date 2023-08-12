@@ -1,3 +1,5 @@
+const getCountryIso3 = require("country-iso-2-to-3");
+
 const Product = require("../model/Product");
 const ProductStat = require("../model/ProductStats");
 const Users = require("../model/User");
@@ -59,7 +61,7 @@ const getTransactions = async (req, res) => {
       .skip(page * pageSize)
       .limit(pageSize);
 
-    // Get the no of document in the database 
+    // Get the no of document in the database
     const total = await Transaction.countDocuments();
 
     res.status(200).json({
@@ -71,8 +73,34 @@ const getTransactions = async (req, res) => {
   }
 };
 
+const getGeography = async (req, res) => {
+  try {
+    const users = await Users.find();
+
+    const mappedLocations = users.reduce((acc, { country }) => {
+      const countryISO3 = getCountryIso3(country);
+      // if country doesn't exist in the accumulator object set its value to 0.
+      if (!acc[countryISO3]) {
+        acc[countryISO3] = 0;
+      }
+      acc[countryISO3]++;
+      return acc;
+    }, {});
+
+    const formattedLocations = Object.entries(mappedLocations).map(
+      ([country, count]) => {
+        return { id: country, value: count };
+      }
+    );
+    res.status(200).json(formattedLocations);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getProducts,
   getCustomers,
   getTransactions,
+  getGeography,
 };
