@@ -6,10 +6,13 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
 
 import {
+  Breakdown,
   Customers,
+  Daily,
   Dashboard,
   Geography,
   Layout,
+  Monthly,
   Overview,
   Products,
   Transactions,
@@ -34,6 +37,9 @@ function App() {
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<Daily />} />
+              <Route path="/monthly" element={<Monthly />} />
+              <Route path="/breakdown" element={<Breakdown />} />
             </Route>
           </Routes>
         </ThemeProvider>

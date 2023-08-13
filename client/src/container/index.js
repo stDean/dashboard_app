@@ -5,3 +5,6 @@ export { default as Customers } from "./customer";
 export { default as Transactions } from "./transaction";
 export { default as Geography } from "./geography";
 export { default as Overview } from "./overview";
+export { default as Daily } from "./daily";
+export { default as Monthly } from "./monthly";
+export { default as Breakdown } from "./breakdown";
