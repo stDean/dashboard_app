@@ -16,14 +16,15 @@ const SalesRoute = require("./routes/sales");
 // const ProductStats = require("./model/ProductStats");
 // const Transaction = require("./model/Transaction");
 // const OverallStat = require("./model/OverallStat");
-const {
-  dataAffiliateStat,
-  dataOverallStat,
-  dataProduct,
-  dataProductStat,
-  dataTransaction,
-  dataUser,
-} = require("./data");
+// const AffiliateStat = require("./model/AffiliateStat");
+// const {
+//   dataAffiliateStat,
+//   dataOverallStat,
+//   dataProduct,
+//   dataProductStat,
+//   dataTransaction,
+//   dataUser,
+// } = require("./data");
 
 const app = express();
 app.use(express.json());
@@ -59,6 +60,7 @@ const start = async () => {
     // ProductStats.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
+    // AffiliateStat.insertMany(dataAffiliateStat);
 
     app.listen(PORT, () => {
       console.log(`Server listening on port: ${PORT}`);

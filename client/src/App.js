@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
 
 import {
+  Admin,
   Breakdown,
   Customers,
   Daily,
@@ -14,6 +15,7 @@ import {
   Layout,
   Monthly,
   Overview,
+  Performance,
   Products,
   Transactions,
 } from "container";
@@ -40,6 +42,8 @@ function App() {
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/performance" element={<Performance />} />
             </Route>
           </Routes>
         </ThemeProvider>

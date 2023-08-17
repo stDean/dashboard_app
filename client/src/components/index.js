@@ -5,3 +5,4 @@ export { default as Header } from "./Header";
 export { default as DataGridCustomToolbar } from "./DataGridCustomToolbar";
 export { default as OverviewChart } from "./OverviewChart";
 export { default as BreakdownChart } from "./BreakdownChart";
+export { default as CustomColumnMenu } from "./DataGridCustomColumnMenu";

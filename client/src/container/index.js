@@ -8,3 +8,5 @@ export { default as Overview } from "./overview";
 export { default as Daily } from "./daily";
 export { default as Monthly } from "./monthly";
 export { default as Breakdown } from "./breakdown";
+export { default as Admin } from "./admin";
+export { default as Performance } from "./performance";
